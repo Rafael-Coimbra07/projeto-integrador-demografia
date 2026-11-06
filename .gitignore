@@ -45,3 +45,8 @@ ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 .DS_Store
+
+# Local caches and agent tooling
+.agents/
+.claude/
+.taste-skill/
