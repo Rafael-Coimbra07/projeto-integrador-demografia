@@ -35,13 +35,11 @@ st.markdown("""
     .main-title {
         font-size: 1.85rem;
         font-weight: 700;
-        color: inherit !important;
         margin-bottom: 0.2rem;
         letter-spacing: -0.02em;
     }
     .subtitle {
         font-size: 0.95rem;
-        color: inherit !important;
         opacity: 0.85;
         margin-bottom: 1.2rem;
     }
@@ -70,7 +68,7 @@ st.markdown("""
         color: #64748B;
     }
     .persona-box {
-        background-color: #F8FAFC;
+        background-color: rgba(37, 99, 235, 0.08);
         border-left: 4px solid #2563EB;
         padding: 14px 18px;
         border-radius: 0 8px 8px 0;
@@ -92,10 +90,6 @@ st.markdown("""
         background-color: #EFF6FF;
         color: #1D4ED8;
         margin-bottom: 8px;
-    }
-    @media (prefers-color-scheme: dark) {
-        .main-title, h1, h2, h3, h4 { color: #FFFFFF !important; }
-        .subtitle, p, span { color: #E2E8F0; }
     }
 </style>
 """, unsafe_allow_html=True)
