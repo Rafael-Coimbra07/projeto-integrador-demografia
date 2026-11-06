@@ -31,65 +31,83 @@ st.set_page_config(
 # Estilização Refinada e Sóbria (House Style Policy & Civic Analytics)
 st.markdown("""
 <style>
-    /* Tipografia e espaçamentos limpos */
-    .main-title {
-        font-size: 1.85rem;
-        font-weight: 700;
-        margin-bottom: 0.2rem;
-        letter-spacing: -0.02em;
+    /* 1. Medida Ergonomica de Linha (< 75ch) */
+    p, [data-testid="stMarkdownContainer"] p, .subtitle {
+        max-width: 72ch !important;
+        text-wrap: pretty !important;
+        font-size: 15px !important;
+        line-height: 1.6 !important;
     }
-    .subtitle {
-        font-size: 0.95rem;
-        opacity: 0.85;
-        margin-bottom: 1.2rem;
+
+    /* 2. Hierarquia Tipografica Rigorosa (Degraus >= 1.25x comprovados) */
+    h5 {
+        font-size: 19px !important;
+        font-weight: 600 !important;
     }
-    .stat-card {
-        background-color: #FFFFFF;
-        border: 1px solid #E2E8F0;
-        border-radius: 8px;
-        padding: 16px;
-        margin-bottom: 12px;
+    h4 {
+        font-size: 24px !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.01em !important;
     }
-    .stat-label {
-        font-size: 0.78rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: #64748B;
-        font-weight: 600;
+    h3 {
+        font-size: 30px !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.02em !important;
     }
-    .stat-value {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: #0F172A;
-        margin: 4px 0;
+    h2 {
+        font-size: 38px !important;
+        font-weight: 700 !important;
     }
-    .stat-detail {
-        font-size: 0.8rem;
-        color: #64748B;
+    h1, .main-title {
+        font-size: 48px !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.03em !important;
+        line-height: 1.15 !important;
+        margin-bottom: 0.4rem !important;
     }
+
+    /* 3. Cards Arquiteturais sem Anti-patterns de IA */
     .persona-box {
-        background-color: rgba(37, 99, 235, 0.08);
-        border-left: 4px solid #2563EB;
-        padding: 14px 18px;
-        border-radius: 0 8px 8px 0;
-        margin-bottom: 18px;
+        background-color: rgba(37, 99, 235, 0.05);
+        border: 1px solid rgba(37, 99, 235, 0.22);
+        padding: 18px 22px;
+        border-radius: 8px;
+        margin-bottom: 20px;
     }
     .news-card {
-        background-color: #FFFFFF;
-        border: 1px solid #E2E8F0;
+        background-color: var(--secondary-background-color, #FFFFFF);
+        border: 1px solid rgba(148, 163, 184, 0.25);
         border-radius: 8px;
         padding: 18px;
         margin-bottom: 14px;
     }
     .news-tag {
         display: inline-block;
-        padding: 2px 8px;
+        padding: 3px 10px;
         font-size: 0.72rem;
         font-weight: 600;
         border-radius: 4px;
-        background-color: #EFF6FF;
-        color: #1D4ED8;
+        background-color: rgba(37, 99, 235, 0.12);
+        color: #2563EB;
         margin-bottom: 8px;
+    }
+
+    /* 4. Acessibilidade WCAG AA: Contraste Rigoroso em Abas e Textos (> 4.5:1) */
+    button[data-baseweb="tab"] p,
+    button[data-baseweb="tab"][aria-selected="true"] p,
+    div[data-testid="stTabs"] button p,
+    [id*="tab"] p {
+        color: #60A5FA !important;
+        font-weight: 600 !important;
+    }
+
+    /* 5. Acessibilidade WCAG AA: Captions e Citacoes com contraste >= 4.5:1 */
+    [data-testid="stCaptionContainer"] p,
+    [data-testid="stCaptionContainer"],
+    blockquote,
+    blockquote p,
+    blockquote em {
+        color: #CBD5E1 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -101,13 +119,13 @@ def main():
     # ==========================================
     with st.sidebar:
         st.markdown("### 🏛️ Números que Falam")
-        st.caption("Dashboard de Apoio à Gestão Pública Municipal")
+        st.caption("Apoio à Gestão Pública das Capitais")
         st.divider()
 
         # Recurso Mandatório: Upload de Arquivos
         st.markdown("#### 📂 Ingestão de Dados (Upload)")
         uploaded_file = st.file_uploader(
-            "Carregar base alternativa (CSV ou XLSX):",
+            "Base de dados alternativa (CSV/XLSX):",
             type=["csv", "xlsx", "xls"],
             help="Carregue uma planilha com colunas 'municipio', 'pop_2010' e 'pop_2022' ou 'taxa_crescimento_pct'."
         )
@@ -253,13 +271,13 @@ def main():
             st.warning(f"Foram identificados **{total_outliers} municípios anômalos (outliers)** além dos limites de 1,5 × IQR.")
             col_out1, col_out2 = st.columns(2)
             with col_out1:
-                st.markdown("**Cidades com Crescimento Exorbitante (Outliers Superiores):**")
+                st.markdown("**Cidades com Crescimento Acentuado (Outliers):**")
                 if not outliers_sup.empty:
                     st.dataframe(outliers_sup[["municipio", "uf", "pop_2010", "pop_2022", "taxa_crescimento_pct"]], hide_index=True)
                 else:
                     st.info("Nenhuma cidade ultrapassou o limite superior.")
             with col_out2:
-                st.markdown("**Cidades com Retração Severa (Outliers Inferiores):**")
+                st.markdown("**Cidades com Retração Severa (Outliers):**")
                 if not outliers_inf.empty:
                     st.dataframe(outliers_inf[["municipio", "uf", "pop_2010", "pop_2022", "taxa_crescimento_pct"]], hide_index=True)
                 else:
