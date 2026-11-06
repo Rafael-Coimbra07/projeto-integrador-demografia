@@ -1,0 +1,103 @@
+localidade,faixa_etaria,ordem,homens,mulheres,total
+Curitiba,0 a 4 anos,0,46800,44900,91700
+Curitiba,5 a 9 anos,1,49200,47100,96300
+Curitiba,10 a 14 anos,2,52100,49800,101900
+Curitiba,15 a 19 anos,3,58900,57200,116100
+Curitiba,20 a 24 anos,4,69400,69800,139200
+Curitiba,25 a 29 anos,5,75100,77900,153000
+Curitiba,30 a 34 anos,6,74200,78500,152700
+Curitiba,35 a 39 anos,7,71500,76900,148400
+Curitiba,40 a 44 anos,8,68900,75400,144300
+Curitiba,45 a 49 anos,9,60200,67800,128000
+Curitiba,50 a 54 anos,10,54100,62400,116500
+Curitiba,55 a 59 anos,11,48300,57900,106200
+Curitiba,60 a 64 anos,12,41200,51800,93000
+Curitiba,65 a 69 anos,13,31900,42300,74200
+Curitiba,70 a 74 anos,14,22100,32100,54200
+Curitiba,75 a 79 anos,15,13800,21800,35600
+Curitiba,80 anos ou mais,16,11400,20318,31718
+Porto Alegre,0 a 4 anos,0,31800,30500,62300
+Porto Alegre,5 a 9 anos,1,33900,32400,66300
+Porto Alegre,10 a 14 anos,2,36200,34800,71000
+Porto Alegre,15 a 19 anos,3,41800,40900,82700
+Porto Alegre,20 a 24 anos,4,48900,50200,99100
+Porto Alegre,25 a 29 anos,5,52800,56400,109200
+Porto Alegre,30 a 34 anos,6,53100,58200,111300
+Porto Alegre,35 a 39 anos,7,52400,58900,111300
+Porto Alegre,40 a 44 anos,8,51200,58100,109300
+Porto Alegre,45 a 49 anos,9,46100,54200,100300
+Porto Alegre,50 a 54 anos,10,42800,52100,94900
+Porto Alegre,55 a 59 anos,11,40100,50300,90400
+Porto Alegre,60 a 64 anos,12,36200,47800,84000
+Porto Alegre,65 a 69 anos,13,29800,41900,71700
+Porto Alegre,70 a 74 anos,14,21900,33800,55700
+Porto Alegre,75 a 79 anos,15,14200,24500,38700
+Porto Alegre,80 anos ou mais,16,12645,25200,37845
+Belo Horizonte,0 a 4 anos,0,56900,54200,111100
+Belo Horizonte,5 a 9 anos,1,60200,57800,118000
+Belo Horizonte,10 a 14 anos,2,64800,61900,126700
+Belo Horizonte,15 a 19 anos,3,74100,71800,145900
+Belo Horizonte,20 a 24 anos,4,89200,89900,179100
+Belo Horizonte,25 a 29 anos,5,97800,102400,200200
+Belo Horizonte,30 a 34 anos,6,99100,106500,205600
+Belo Horizonte,35 a 39 anos,7,96500,105800,202300
+Belo Horizonte,40 a 44 anos,8,93200,104200,197400
+Belo Horizonte,45 a 49 anos,9,81500,93900,175400
+Belo Horizonte,50 a 54 anos,10,74200,87800,162000
+Belo Horizonte,55 a 59 anos,11,67100,82100,149200
+Belo Horizonte,60 a 64 anos,12,57900,74300,132200
+Belo Horizonte,65 a 69 anos,13,44800,60800,105600
+Belo Horizonte,70 a 74 anos,14,31200,45100,76300
+Belo Horizonte,75 a 79 anos,15,19400,30500,49900
+Belo Horizonte,80 anos ou mais,16,16960,29800,46760
+Salvador,0 a 4 anos,0,58200,56100,114300
+Salvador,5 a 9 anos,1,62900,60800,123700
+Salvador,10 a 14 anos,2,71200,68900,140100
+Salvador,15 a 19 anos,3,84300,82400,166700
+Salvador,20 a 24 anos,4,98900,104200,203100
+Salvador,25 a 29 anos,5,105200,117500,222700
+Salvador,30 a 34 anos,6,104100,119800,223900
+Salvador,35 a 39 anos,7,99800,116900,216700
+Salvador,40 a 44 anos,8,93500,111800,205300
+Salvador,45 a 49 anos,9,80400,100200,180600
+Salvador,50 a 54 anos,10,71200,92100,163300
+Salvador,55 a 59 anos,11,61800,83400,145200
+Salvador,60 a 64 anos,12,49900,71200,121100
+Salvador,65 a 69 anos,13,37200,56300,93500
+Salvador,70 a 74 anos,14,24800,40100,64900
+Salvador,75 a 79 anos,15,14900,25900,40800
+Salvador,80 anos ou mais,16,11478,22800,34278
+Florianópolis,0 a 4 anos,0,14900,14200,29100
+Florianópolis,5 a 9 anos,1,15400,14800,30200
+Florianópolis,10 a 14 anos,2,16100,15400,31500
+Florianópolis,15 a 19 anos,3,18500,17900,36400
+Florianópolis,20 a 24 anos,4,23900,24500,48400
+Florianópolis,25 a 29 anos,5,26800,27900,54700
+Florianópolis,30 a 34 anos,6,25900,27400,53300
+Florianópolis,35 a 39 anos,7,24200,25800,50000
+Florianópolis,40 a 44 anos,8,22100,23800,45900
+Florianópolis,45 a 49 anos,9,18900,20900,39800
+Florianópolis,50 a 54 anos,10,16500,18800,35300
+Florianópolis,55 a 59 anos,11,14100,16500,30600
+Florianópolis,60 a 64 anos,12,11800,14200,26000
+Florianópolis,65 a 69 anos,13,8900,11200,20100
+Florianópolis,70 a 74 anos,14,5900,8100,14000
+Florianópolis,75 a 79 anos,15,3600,5200,8800
+Florianópolis,80 anos ou mais,16,2811,4600,7411
+Brasil (Total),0 a 4 anos,0,6840000,6550000,13390000
+Brasil (Total),5 a 9 anos,1,7180000,6890000,14070000
+Brasil (Total),10 a 14 anos,2,7750000,7460000,15210000
+Brasil (Total),15 a 19 anos,3,8420000,8190000,16610000
+Brasil (Total),20 a 24 anos,4,8950000,8820000,17770000
+Brasil (Total),25 a 29 anos,5,8720000,8750000,17470000
+Brasil (Total),30 a 34 anos,6,8490000,8680000,17170000
+Brasil (Total),35 a 39 anos,7,8210000,8560000,16770000
+Brasil (Total),40 a 44 anos,8,7780000,8290000,16070000
+Brasil (Total),45 a 49 anos,9,6820000,7420000,14240000
+Brasil (Total),50 a 54 anos,10,5980000,6680000,12660000
+Brasil (Total),55 a 59 anos,11,5140000,5890000,11030000
+Brasil (Total),60 a 64 anos,12,4210000,5010000,9220000
+Brasil (Total),65 a 69 anos,13,3190000,3980000,7170000
+Brasil (Total),70 a 74 anos,14,2180000,2920000,5100000
+Brasil (Total),75 a 79 anos,15,1340000,1950000,3290000
+Brasil (Total),80 anos ou mais,16,1120000,1880000,3000000

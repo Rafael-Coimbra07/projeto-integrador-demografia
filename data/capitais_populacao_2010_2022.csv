@@ -1,0 +1,28 @@
+municipio,uf,regiao,pop_2010,pop_2022,persona,variacao_absoluta,taxa_crescimento_pct,taxa_anual_pct
+Curitiba,PR,Sul,1751907,1773718,Carlos (Prefeito de Curitiba),21811,1.24,0.1
+Porto Alegre,RS,Sul,1409351,1332845,Eduardo (Prefeito de Porto Alegre),-76506,-5.43,-0.46
+Florianópolis,SC,Sul,421240,537211,Roberto (Prefeito de Florianópolis),115971,27.53,2.05
+Belo Horizonte,MG,Sudeste,2375151,2315560,Elisa (Prefeita de Belo Horizonte),-59591,-2.51,-0.21
+São Paulo,SP,Sudeste,11253503,11451999,,198496,1.76,0.15
+Rio de Janeiro,RJ,Sudeste,6320446,6211223,,-109223,-1.73,-0.15
+Vitória,ES,Sudeste,327801,322869,,-4932,-1.5,-0.13
+Salvador,BA,Nordeste,2675656,2417678,Jorge (Prefeito de Salvador),-257978,-9.64,-0.84
+Fortaleza,CE,Nordeste,2452185,2428708,,-23477,-0.96,-0.08
+Recife,PE,Nordeste,1537704,1488920,,-48784,-3.17,-0.27
+São Luís,MA,Nordeste,1014837,1037775,,22938,2.26,0.19
+Maceió,AL,Nordeste,932748,957916,,25168,2.7,0.22
+Teresina,PI,Nordeste,814230,866300,,52070,6.39,0.52
+Natal,RN,Nordeste,803739,751300,,-52439,-6.52,-0.56
+João Pessoa,PB,Nordeste,723515,833932,,110417,15.26,1.19
+Aracaju,SE,Nordeste,571149,602757,,31608,5.53,0.45
+Brasília,DF,Centro-Oeste,2570160,2817381,,247221,9.62,0.77
+Goiânia,GO,Centro-Oeste,1302001,1437366,,135365,10.4,0.83
+Campo Grande,MS,Centro-Oeste,786797,898100,,111303,14.15,1.11
+Cuiabá,MT,Centro-Oeste,551098,650877,,99779,18.11,1.4
+Manaus,AM,Norte,1802014,2063689,,261675,14.52,1.14
+Belém,PA,Norte,1393399,1303403,,-89996,-6.46,-0.55
+Porto Velho,RO,Norte,428527,460434,,31907,7.45,0.6
+Macapá,AP,Norte,398204,442933,,44729,11.23,0.89
+Rio Branco,AC,Norte,336038,364756,,28718,8.55,0.69
+Boa Vista,RR,Norte,284313,413486,,129173,45.43,3.17
+Palmas,TO,Norte,228332,302692,,74360,32.57,2.38
