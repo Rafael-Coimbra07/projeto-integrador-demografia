@@ -6,5 +6,5 @@
   - **Foco:** Análise de crescimento populacional acumulado, pirâmide etária, envelhecimento e cidades outliers.
 
 ## Regras Mandatórias de Interação
-1. **Aguardar comando explícito:** Após receber arquivos, links ou dados, **NÃO execute** o desenvolvimento ou processamento automaticamente. Registre o recebimento, organize o que foi recebido e aguarde o comando direto do usuário para dar o próximo passo.
+1. **Aguardar alinhamento apenas no planejamento:** A exigência de aguardar comando explícito aplica-se **apenas quando estivermos planejando como fazer** (definição de arquitetura, estruturação de etapas e novas abordagens). Em fases de desenvolvimento ativo, ajustes pontuais, correções de bugs, design e execuções diretas, execute as alterações imediatamente com agilidade e transparência.
 2. **Didática e Rigor:** Cumprir estritamente a rubrica acadêmica (cálculos de média, mediana, quartis, IQR, desvio padrão e justificativa de outliers).

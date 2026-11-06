@@ -11,6 +11,6 @@
     - Seção de notícias sobre transição demográfica/envelhecimento e imagens.
 
 ## Diretrizes de Operação (Regras de Interação)
-1. **Aguardar comando do usuário:** Nunca inicie serviços, scripts, pipelines de ETL ou códigos automaticamente após o recebimento de dados/links. Sempre apresente a leitura/confirmação e aguarde a ordem expressa do usuário para executar.
+1. **Aguardar alinhamento apenas no planejamento:** A etapa de apresentação prévia e espera por ordem expressa aplica-se **apenas quando estivermos planejando como fazer** (decisões conceituais, novas funcionalidades ou desenho da solução). Durante a execução, desenvolvimento de código, ajustes visuais/CSS e correção de bugs, atue diretamente com agilidade.
 2. **Passo a passo transparente:** Todo código e cálculo deve ser validado e explicado antes da consolidação final.
 3. **Formato das entregas:** Preparar o projeto com estrutura modular para permitir tanto a entrega individual quanto a unificação final com o grupo no GitHub.
