@@ -31,7 +31,7 @@ def plot_boxplot_dispersao(df: pd.DataFrame, stats: Dict[str, Any], coluna_taxa:
         name="Capitais Brasileiras",
         boxpoints="outliers",
         marker=dict(color=COLOR_ACCENT, size=7, opacity=0.8),
-        line=dict(color=COLOR_PRIMARY, width=1.5),
+        line=dict(color=COLOR_ACCENT, width=2.0),
         fillcolor="rgba(37, 99, 235, 0.12)",
         hovertemplate="<b>Taxa:</b> %{y:.2f}%<extra></extra>"
     ))
@@ -56,7 +56,7 @@ def plot_boxplot_dispersao(df: pd.DataFrame, stats: Dict[str, Any], coluna_taxa:
     fig.update_layout(
         title=dict(
             text="<b>Distribuição e Dispersão da Taxa de Crescimento (2010–2022)</b>",
-            font=dict(size=15, color=COLOR_PRIMARY, family=FONT_FAMILY)
+            font=dict(size=15, family=FONT_FAMILY)
         ),
         yaxis=dict(
             title="Taxa de Crescimento Acumulada (%)",
@@ -102,7 +102,7 @@ def plot_crescimento_barras(df: pd.DataFrame, coluna_taxa: str = "taxa_crescimen
     fig.update_layout(
         title=dict(
             text="<b>Ranking da Taxa de Crescimento Populacional por Cidade (2010 a 2022)</b>",
-            font=dict(size=15, color=COLOR_PRIMARY, family=FONT_FAMILY)
+            font=dict(size=15, family=FONT_FAMILY)
         ),
         xaxis=dict(
             title="Taxa de Crescimento (%)",
@@ -166,7 +166,7 @@ def plot_piramide_etaria(df_piramide: pd.DataFrame, localidade: str = "Curitiba"
     fig.update_layout(
         title=dict(
             text=f"<b>Pirâmide Etária — Censo 2022: {localidade}</b>",
-            font=dict(size=15, color=COLOR_PRIMARY, family=FONT_FAMILY)
+            font=dict(size=15, family=FONT_FAMILY)
         ),
         barmode="overlay",
         bargap=0.1,
@@ -213,7 +213,7 @@ def plot_evolucao_comparativa(df: pd.DataFrame, cidades_destaque: List[str]) -> 
     fig.update_layout(
         title=dict(
             text="<b>Trajetória Populacional: Censo 2010 vs. Censo 2022</b>",
-            font=dict(size=15, color=COLOR_PRIMARY, family=FONT_FAMILY)
+            font=dict(size=15, family=FONT_FAMILY)
         ),
         yaxis=dict(
             title="População Residente",

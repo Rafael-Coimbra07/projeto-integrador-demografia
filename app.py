@@ -35,13 +35,14 @@ st.markdown("""
     .main-title {
         font-size: 1.85rem;
         font-weight: 700;
-        color: #0F172A;
+        color: inherit !important;
         margin-bottom: 0.2rem;
         letter-spacing: -0.02em;
     }
     .subtitle {
         font-size: 0.95rem;
-        color: #475569;
+        color: inherit !important;
+        opacity: 0.85;
         margin-bottom: 1.2rem;
     }
     .stat-card {
@@ -91,6 +92,10 @@ st.markdown("""
         background-color: #EFF6FF;
         color: #1D4ED8;
         margin-bottom: 8px;
+    }
+    @media (prefers-color-scheme: dark) {
+        .main-title, h1, h2, h3, h4 { color: #FFFFFF !important; }
+        .subtitle, p, span { color: #E2E8F0; }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -171,8 +176,8 @@ def main():
         
         st.markdown(f"""
         <div class="persona-box">
-            <h4 style="margin: 0 0 6px 0; color: #1E3A8A;">📋 Briefing Executivo: {persona_selecionada}</h4>
-            <p style="margin: 0; font-size: 0.92rem; color: #334155;">
+            <h4 style="margin: 0 0 6px 0; color: inherit;">📋 Briefing Executivo: {persona_selecionada}</h4>
+            <p style="margin: 0; font-size: 0.92rem; color: inherit; opacity: 0.9;">
                 <b>Diagnóstico de {cidade_alvo}:</b> População apurada em 2022 de <b>{pop22_cid:,}</b> habitantes, com 
                 taxa acumulada de crescimento de <b style="color: {'#0D9488' if taxa_cid >= 0 else '#BE123C'}">{taxa_cid:+.2f}%</b> entre 2010 e 2022.<br>
                 <b>Diretriz para o Plano Diretor:</b> {'Priorizar infraestrutura urbana e contenção de adensamento acelerado.' if taxa_cid > 10 else 'Reorganizar redes de atenção básica e transporte público frente à estabilização/retração demográfica.'}
@@ -354,9 +359,9 @@ def main():
             st.markdown(f"""
             <div class="news-card">
                 <span class="news-tag">{notic['categoria']}</span>
-                <h4 style="margin: 4px 0 8px 0; color: #1E293B;">{notic['titulo']}</h4>
-                <p style="margin: 0 0 10px 0; font-size: 0.9rem; color: #475569;">{notic['resumo']}</p>
-                <div style="font-size: 0.78rem; color: #64748B;">
+                <h4 style="margin: 4px 0 8px 0; color: inherit;">{notic['titulo']}</h4>
+                <p style="margin: 0 0 10px 0; font-size: 0.9rem; color: inherit; opacity: 0.85;">{notic['resumo']}</p>
+                <div style="font-size: 0.78rem; color: inherit; opacity: 0.75;">
                     <b>Fonte:</b> {notic['fonte']} · <b>Data:</b> {notic['data']} · 
                     <a href="{notic['url']}" target="_blank" style="color: #2563EB; text-decoration: none;">Acessar matéria original ↗</a>
                 </div>
