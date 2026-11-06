@@ -8,13 +8,14 @@ import plotly.express as px
 import pandas as pd
 
 
-# Paleta Institucional e Sóbria (Estilo Policy / Civic Analytics)
-COLOR_PRIMARY = "#1E293B"     # Slate 800
-COLOR_ACCENT = "#2563EB"      # Blue 600
-COLOR_POSITIVE = "#0D9488"    # Teal 600 (crescimento populacional)
-COLOR_NEGATIVE = "#BE123C"    # Rose 700 (retração populacional)
-COLOR_HIGHLIGHT = "#D97706"   # Amber 600 (destaque persona)
+# Paleta Institucional e Sóbria (Estilo Policy / Civic Analytics — Accent Ladder)
+COLOR_PRIMARY = "#0F172A"     # Slate 900
+COLOR_ACCENT = "#0284C7"      # Sky 600 (Executive Civic Accent)
+COLOR_GROWTH = "#15803D"      # Emerald 700 (crescimento populacional)
+COLOR_DECLINE = "#BE123C"     # Rose 700 (retração populacional)
+COLOR_HIGHLIGHT = "#B45309"   # Amber 700 (destaque persona)
 COLOR_MUTED = "#64748B"       # Slate 500
+COLOR_GRID = "rgba(148, 163, 184, 0.15)"
 BG_PAPER = "rgba(0,0,0,0)"
 FONT_FAMILY = "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
 
@@ -30,9 +31,9 @@ def plot_boxplot_dispersao(df: pd.DataFrame, stats: Dict[str, Any], coluna_taxa:
         y=df[coluna_taxa],
         name="Capitais Brasileiras",
         boxpoints="outliers",
-        marker=dict(color=COLOR_ACCENT, size=7, opacity=0.8),
-        line=dict(color=COLOR_ACCENT, width=2.0),
-        fillcolor="rgba(37, 99, 235, 0.12)",
+        marker=dict(color=COLOR_ACCENT, size=7, opacity=0.85),
+        line=dict(color=COLOR_ACCENT, width=1.8),
+        fillcolor="rgba(2, 132, 199, 0.08)",
         hovertemplate="<b>Taxa:</b> %{y:.2f}%<extra></extra>"
     ))
 
@@ -48,7 +49,7 @@ def plot_boxplot_dispersao(df: pd.DataFrame, stats: Dict[str, Any], coluna_taxa:
         annotation_position="top right"
     )
     fig.add_hline(
-        y=lim_inf, line_dash="dot", line_color=COLOR_NEGATIVE, line_width=1.5,
+        y=lim_inf, line_dash="dot", line_color=COLOR_DECLINE, line_width=1.5,
         annotation_text=f"Limite Inferior (Q1 - 1,5·IQR): {lim_inf:.2f}%",
         annotation_position="bottom right"
     )
@@ -61,8 +62,8 @@ def plot_boxplot_dispersao(df: pd.DataFrame, stats: Dict[str, Any], coluna_taxa:
         yaxis=dict(
             title="Taxa de Crescimento Acumulada (%)",
             zeroline=True,
-            zerolinecolor="#CBD5E1",
-            gridcolor="#F1F5F9"
+            zerolinecolor="rgba(148, 163, 184, 0.35)",
+            gridcolor=COLOR_GRID
         ),
         paper_bgcolor=BG_PAPER,
         plot_bgcolor=BG_PAPER,
@@ -85,9 +86,9 @@ def plot_crescimento_barras(df: pd.DataFrame, coluna_taxa: str = "taxa_crescimen
         if row.get("persona") is not None and pd.notna(row.get("persona")):
             cores.append(COLOR_HIGHLIGHT) # Destaque prefeitos personas
         elif row[coluna_taxa] >= 0:
-            cores.append(COLOR_POSITIVE)  # Crescimento
+            cores.append(COLOR_GROWTH)    # Crescimento
         else:
-            cores.append(COLOR_NEGATIVE)  # Retração
+            cores.append(COLOR_DECLINE)   # Retração
 
     fig = go.Figure()
     fig.add_trace(go.Bar(
@@ -107,9 +108,9 @@ def plot_crescimento_barras(df: pd.DataFrame, coluna_taxa: str = "taxa_crescimen
         xaxis=dict(
             title="Taxa de Crescimento (%)",
             zeroline=True,
-            zerolinecolor="#64748B",
+            zerolinecolor="rgba(148, 163, 184, 0.4)",
             zerolinewidth=1.5,
-            gridcolor="#F1F5F9"
+            gridcolor=COLOR_GRID
         ),
         yaxis=dict(
             title="",
@@ -144,7 +145,7 @@ def plot_piramide_etaria(df_piramide: pd.DataFrame, localidade: str = "Curitiba"
         x=homens_negativo,
         name="Homens",
         orientation="h",
-        marker=dict(color="#3B82F6"),
+        marker=dict(color=COLOR_ACCENT),
         customdata=df_local["homens"],
         hovertemplate="<b>Homens (%{y})</b>: %{customdata:,}<extra></extra>"
     ))
@@ -155,7 +156,7 @@ def plot_piramide_etaria(df_piramide: pd.DataFrame, localidade: str = "Curitiba"
         x=mulheres,
         name="Mulheres",
         orientation="h",
-        marker=dict(color="#EC4899"),
+        marker=dict(color="#0F766E"),
         customdata=df_local["mulheres"],
         hovertemplate="<b>Mulheres (%{y})</b>: %{customdata:,}<extra></extra>"
     ))
@@ -175,7 +176,7 @@ def plot_piramide_etaria(df_piramide: pd.DataFrame, localidade: str = "Curitiba"
             range=[-max_val, max_val],
             tickvals=[-max_val * 0.75, -max_val * 0.5, -max_val * 0.25, 0, max_val * 0.25, max_val * 0.5, max_val * 0.75],
             ticktext=[f"{int(max_val*0.75):,}", f"{int(max_val*0.5):,}", f"{int(max_val*0.25):,}", "0", f"{int(max_val*0.25):,}", f"{int(max_val*0.5):,}", f"{int(max_val*0.75):,}"],
-            gridcolor="#F1F5F9"
+            gridcolor=COLOR_GRID
         ),
         yaxis=dict(title="Faixa Etária"),
         paper_bgcolor=BG_PAPER,
@@ -194,7 +195,7 @@ def plot_evolucao_comparativa(df: pd.DataFrame, cidades_destaque: List[str]) -> 
     df_selecionadas = df[df["municipio"].isin(cidades_destaque)].copy()
     
     fig = go.Figure()
-    cores_linha = [COLOR_ACCENT, COLOR_HIGHLIGHT, COLOR_POSITIVE, COLOR_NEGATIVE, "#8B5CF6"]
+    cores_linha = [COLOR_ACCENT, "#0F766E", COLOR_HIGHLIGHT, "#475569", "#0284C7"]
 
     for i, (_, row) in enumerate(df_selecionadas.iterrows()):
         cor = cores_linha[i % len(cores_linha)]
@@ -217,7 +218,7 @@ def plot_evolucao_comparativa(df: pd.DataFrame, cidades_destaque: List[str]) -> 
         ),
         yaxis=dict(
             title="População Residente",
-            gridcolor="#F1F5F9"
+            gridcolor=COLOR_GRID
         ),
         paper_bgcolor=BG_PAPER,
         plot_bgcolor=BG_PAPER,

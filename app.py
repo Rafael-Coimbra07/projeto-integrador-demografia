@@ -28,7 +28,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Estilização Refinada e Sóbria (House Style Policy & Civic Analytics)
+# Estilização Refinada e Sóbria (Civic Analytics • Accent Ladder System)
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
@@ -50,11 +50,11 @@ st.markdown("""
         justify-content: flex-end !important;
     }
 
-    /* 2. Medida Ergonomica de Linha (< 75ch) */
+    /* 2. Medida Ergonômica de Leitura (< 72ch) */
     p, [data-testid="stMarkdownContainer"] p {
         max-width: 72ch !important;
         text-wrap: pretty !important;
-        font-size: 15px !important;
+        font-size: 14.5px !important;
         line-height: 1.6 !important;
         color: var(--text-color, inherit) !important;
     }
@@ -64,11 +64,11 @@ st.markdown("""
         font-size: 14px !important;
         line-height: 1.5 !important;
         color: var(--text-color, inherit) !important;
-        opacity: 0.82 !important;
+        opacity: 0.8 !important;
         margin-bottom: 1.2rem !important;
     }
 
-    /* 3. Hierarquia Tipografica Rigorosa com Contraste Dinamico */
+    /* 3. Hierarquia Tipográfica e Título Executivo */
     h1, .main-title {
         font-size: 26px !important;
         font-weight: 700 !important;
@@ -78,24 +78,24 @@ st.markdown("""
         color: var(--text-color, inherit) !important;
     }
     h2 {
-        font-size: 24px !important;
+        font-size: 22px !important;
         font-weight: 700 !important;
         color: var(--text-color, inherit) !important;
     }
     h3 {
-        font-size: 20px !important;
+        font-size: 19px !important;
         font-weight: 700 !important;
         letter-spacing: -0.01em !important;
         color: var(--text-color, inherit) !important;
     }
     h4 {
-        font-size: 18px !important;
+        font-size: 17px !important;
         font-weight: 600 !important;
         letter-spacing: -0.01em !important;
         color: var(--text-color, inherit) !important;
     }
     h5 {
-        font-size: 15px !important;
+        font-size: 14px !important;
         font-weight: 600 !important;
         color: var(--text-color, inherit) !important;
     }
@@ -107,40 +107,136 @@ st.markdown("""
         }
     }
 
-    /* 4. Cards Arquiteturais e Dinamica de Cores */
-    .persona-box {
-        background-color: rgba(37, 99, 235, 0.06);
-        border: 1px solid rgba(37, 99, 235, 0.25);
-        padding: 16px 20px;
-        border-radius: 8px;
-        margin-bottom: 20px;
+    /* 4. KPI Cards — Design Plano e Tipografia Pura (Accent-Ladder) */
+    [data-testid="stMetric"] {
+        background-color: rgba(255, 255, 255, 0.02) !important;
+        border: 1px solid #262626 !important;
+        border-radius: 8px !important;
+        padding: 14px 18px !important;
+        box-shadow: none !important;
+        transition: border-color 0.15s ease;
+    }
+    [data-testid="stMetric"]:hover {
+        border-color: rgba(2, 132, 199, 0.35) !important;
+    }
+    [data-testid="stMetricLabel"] {
+        font-size: 13px !important;
+        font-weight: 500 !important;
+        text-transform: none !important;
+        letter-spacing: normal !important;
+        color: var(--text-color, inherit) !important;
+        opacity: 0.75 !important;
+        margin-bottom: 2px !important;
+    }
+    [data-testid="stMetricValue"] {
+        font-size: 25px !important;
+        font-weight: 700 !important;
+        font-variant-numeric: tabular-nums !important;
+        font-feature-settings: "tnum" !important;
+        line-height: 1.15 !important;
         color: var(--text-color, inherit) !important;
     }
-    .news-card {
-        background-color: rgba(148, 163, 184, 0.06);
-        border: 1px solid rgba(148, 163, 184, 0.25);
+
+    /* 5. Navegação em Abas (Accent-Ladder) */
+    div[data-testid="stTabs"] {
+        border-bottom: 1px solid #262626;
+        margin-bottom: 20px;
+    }
+    div[data-testid="stTabs"] button[data-baseweb="tab"] {
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        color: var(--text-color, inherit) !important;
+        opacity: 0.7 !important;
+        padding: 10px 18px !important;
+        border-radius: 6px 6px 0 0 !important;
+        border-bottom: 2px solid transparent !important;
+        transition: all 0.15s ease !important;
+        background: transparent !important;
+    }
+    div[data-testid="stTabs"] button[data-baseweb="tab"]:hover {
+        opacity: 1 !important;
+        background-color: rgba(2, 132, 199, 0.04) !important;
+    }
+    div[data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] {
+        font-weight: 700 !important;
+        opacity: 1 !important;
+        color: #0284C7 !important;
+        border-bottom: 2px solid #0284C7 !important;
+        background-color: rgba(2, 132, 199, 0.05) !important;
+    }
+
+    /* 6. Briefing Executivo e Badges */
+    .persona-box {
+        background-color: rgba(2, 132, 199, 0.05);
+        border: 1px solid #262626;
+        padding: 16px 20px;
         border-radius: 8px;
-        padding: 18px;
+        margin-bottom: 22px;
+        color: var(--text-color, inherit) !important;
+    }
+    .persona-badge {
+        display: inline-block;
+        padding: 3px 8px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: normal;
+        border-radius: 4px;
+        background-color: rgba(2, 132, 199, 0.1);
+        color: #0284C7;
+        margin-bottom: 8px;
+    }
+
+    /* 7. Notícias e Cards de Planejamento */
+    .news-card {
+        background-color: rgba(255, 255, 255, 0.02);
+        border: 1px solid #262626;
+        border-radius: 8px;
+        padding: 18px 20px;
         margin-bottom: 14px;
         color: var(--text-color, inherit) !important;
+        transition: border-color 0.15s ease;
+    }
+    .news-card:hover {
+        border-color: rgba(2, 132, 199, 0.35);
     }
     .news-card h4 {
         color: var(--text-color, inherit) !important;
         opacity: 1 !important;
-        margin: 4px 0 8px 0;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        margin: 4px 0 8px 0 !important;
     }
     .news-tag {
         display: inline-block;
-        padding: 3px 10px;
-        font-size: 0.72rem;
+        padding: 3px 9px;
+        font-size: 11px;
         font-weight: 600;
         border-radius: 4px;
-        background-color: rgba(37, 99, 235, 0.12);
-        color: #2563EB;
+        background-color: rgba(2, 132, 199, 0.1);
+        color: #0284C7;
         margin-bottom: 8px;
     }
 
-    /* 5. Acessibilidade WCAG AA: Captions e Citacoes com Contraste Automatico */
+    /* 8. Barra Lateral (Sidebar Shell) */
+    [data-testid="stSidebar"] {
+        border-right: 1px solid #262626 !important;
+    }
+    [data-testid="stSidebar"] h3 {
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.01em !important;
+    }
+    [data-testid="stSidebar"] h4 {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        text-transform: none !important;
+        letter-spacing: normal !important;
+        opacity: 0.75 !important;
+        margin-top: 14px !important;
+    }
+
+    /* 9. Acessibilidade WCAG AA: Captions e Citações com Contraste Automático */
     [data-testid="stCaptionContainer"],
     [data-testid="stCaptionContainer"] p,
     blockquote,
@@ -148,14 +244,6 @@ st.markdown("""
     blockquote em {
         color: var(--text-color, inherit) !important;
         opacity: 0.8 !important;
-    }
-
-    /* 6. Abas com Pesos Claros e Sem Cores Forcadas */
-    button[data-baseweb="tab"] {
-        font-weight: 500 !important;
-    }
-    button[data-baseweb="tab"][aria-selected="true"] {
-        font-weight: 700 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -236,10 +324,11 @@ def main():
         
         st.markdown(f"""
         <div class="persona-box">
-            <h4 style="margin: 0 0 6px 0; color: inherit;">Briefing Executivo: {persona_selecionada}</h4>
+            <span class="persona-badge">Briefing Executivo • {cidade_alvo}</span>
+            <h4 style="margin: 0 0 6px 0; color: inherit; font-size: 17px;">Diretriz Estratégica: {persona_selecionada}</h4>
             <p style="margin: 0; font-size: 0.92rem; color: inherit; opacity: 0.9;">
                 <b>Diagnóstico de {cidade_alvo}:</b> População apurada em 2022 de <b>{pop22_cid:,}</b> habitantes, com 
-                taxa acumulada de crescimento de <b style="color: {'#0D9488' if taxa_cid >= 0 else '#BE123C'}">{taxa_cid:+.2f}%</b> entre 2010 e 2022.<br>
+                taxa acumulada de crescimento de <b style="color: {'#15803D' if taxa_cid >= 0 else '#BE123C'}">{taxa_cid:+.2f}%</b> entre 2010 e 2022.<br>
                 <b>Diretriz para o Plano Diretor:</b> {'Priorizar infraestrutura urbana e contenção de adensamento acelerado.' if taxa_cid > 10 else 'Reorganizar redes de atenção básica e transporte público frente à estabilização/retração demográfica.'}
             </p>
         </div>
