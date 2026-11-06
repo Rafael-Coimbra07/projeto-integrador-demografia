@@ -23,7 +23,7 @@ from src.views import (
 # Configuração da Página
 st.set_page_config(
     page_title="Números que Falam • Demografia e Crescimento",
-    page_icon="🏛️",
+    page_icon=None,
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -31,55 +31,103 @@ st.set_page_config(
 # Estilização Refinada e Sóbria (House Style Policy & Civic Analytics)
 st.markdown("""
 <style>
-    /* 1. Medida Ergonomica de Linha (< 75ch) */
-    p, [data-testid="stMarkdownContainer"] p, .subtitle {
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+    /* 1. Tipografia Global e Numerais Tabulares */
+    html, body, .stApp, h1, h2, h3, h4, h5, h6, p, label, input, textarea, select, [data-testid="stMarkdownContainer"] {
+        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    }
+    [data-testid="stIconMaterial"], .material-symbols-rounded, [class*="material-symbols"], [class*="Icon"] {
+        font-family: 'Material Symbols Rounded', 'Material Icons' !important;
+    }
+
+    *, body, [data-testid="stMetricValue"], [data-testid="stMetric"], td, th, [role="cell"], [role="gridcell"], [data-testid="stDataFrame"] {
+        font-variant-numeric: tabular-nums !important;
+        font-feature-settings: "tnum" !important;
+    }
+    td, [role="cell"], [role="gridcell"] {
+        text-align: right !important;
+        justify-content: flex-end !important;
+    }
+
+    /* 2. Medida Ergonomica de Linha (< 75ch) */
+    p, [data-testid="stMarkdownContainer"] p {
         max-width: 72ch !important;
         text-wrap: pretty !important;
         font-size: 15px !important;
         line-height: 1.6 !important;
+        color: var(--text-color, inherit) !important;
+    }
+    .subtitle {
+        max-width: 72ch !important;
+        text-wrap: pretty !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        color: var(--text-color, inherit) !important;
+        opacity: 0.82 !important;
+        margin-bottom: 1.2rem !important;
     }
 
-    /* 2. Hierarquia Tipografica Rigorosa (Degraus >= 1.25x comprovados) */
-    h5 {
-        font-size: 19px !important;
-        font-weight: 600 !important;
-    }
-    h4 {
-        font-size: 24px !important;
-        font-weight: 600 !important;
-        letter-spacing: -0.01em !important;
-    }
-    h3 {
-        font-size: 30px !important;
+    /* 3. Hierarquia Tipografica Rigorosa com Contraste Dinamico */
+    h1, .main-title {
+        font-size: 26px !important;
         font-weight: 700 !important;
         letter-spacing: -0.02em !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.35rem !important;
+        color: var(--text-color, inherit) !important;
     }
     h2 {
-        font-size: 38px !important;
+        font-size: 24px !important;
         font-weight: 700 !important;
+        color: var(--text-color, inherit) !important;
     }
-    h1, .main-title {
-        font-size: 48px !important;
+    h3 {
+        font-size: 20px !important;
         font-weight: 700 !important;
-        letter-spacing: -0.03em !important;
-        line-height: 1.15 !important;
-        margin-bottom: 0.4rem !important;
+        letter-spacing: -0.01em !important;
+        color: var(--text-color, inherit) !important;
+    }
+    h4 {
+        font-size: 18px !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.01em !important;
+        color: var(--text-color, inherit) !important;
+    }
+    h5 {
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        color: var(--text-color, inherit) !important;
     }
 
-    /* 3. Cards Arquiteturais sem Anti-patterns de IA */
+    @media (max-width: 768px) {
+        h1, .main-title {
+            font-size: 22px !important;
+            line-height: 1.25 !important;
+        }
+    }
+
+    /* 4. Cards Arquiteturais e Dinamica de Cores */
     .persona-box {
-        background-color: rgba(37, 99, 235, 0.05);
-        border: 1px solid rgba(37, 99, 235, 0.22);
-        padding: 18px 22px;
+        background-color: rgba(37, 99, 235, 0.06);
+        border: 1px solid rgba(37, 99, 235, 0.25);
+        padding: 16px 20px;
         border-radius: 8px;
         margin-bottom: 20px;
+        color: var(--text-color, inherit) !important;
     }
     .news-card {
-        background-color: var(--secondary-background-color, #FFFFFF);
+        background-color: rgba(148, 163, 184, 0.06);
         border: 1px solid rgba(148, 163, 184, 0.25);
         border-radius: 8px;
         padding: 18px;
         margin-bottom: 14px;
+        color: var(--text-color, inherit) !important;
+    }
+    .news-card h4 {
+        color: var(--text-color, inherit) !important;
+        opacity: 1 !important;
+        margin: 4px 0 8px 0;
     }
     .news-tag {
         display: inline-block;
@@ -92,22 +140,22 @@ st.markdown("""
         margin-bottom: 8px;
     }
 
-    /* 4. Acessibilidade WCAG AA: Contraste Rigoroso em Abas e Textos (> 4.5:1) */
-    button[data-baseweb="tab"] p,
-    button[data-baseweb="tab"][aria-selected="true"] p,
-    div[data-testid="stTabs"] button p,
-    [id*="tab"] p {
-        color: #60A5FA !important;
-        font-weight: 600 !important;
-    }
-
-    /* 5. Acessibilidade WCAG AA: Captions e Citacoes com contraste >= 4.5:1 */
-    [data-testid="stCaptionContainer"] p,
+    /* 5. Acessibilidade WCAG AA: Captions e Citacoes com Contraste Automatico */
     [data-testid="stCaptionContainer"],
+    [data-testid="stCaptionContainer"] p,
     blockquote,
     blockquote p,
     blockquote em {
-        color: #CBD5E1 !important;
+        color: var(--text-color, inherit) !important;
+        opacity: 0.8 !important;
+    }
+
+    /* 6. Abas com Pesos Claros e Sem Cores Forcadas */
+    button[data-baseweb="tab"] {
+        font-weight: 500 !important;
+    }
+    button[data-baseweb="tab"][aria-selected="true"] {
+        font-weight: 700 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -118,12 +166,12 @@ def main():
     # BARRA LATERAL (Critério 1 - Ingestão e Filtros)
     # ==========================================
     with st.sidebar:
-        st.markdown("### 🏛️ Números que Falam")
+        st.markdown("### Números que Falam")
         st.caption("Apoio à Gestão Pública das Capitais")
         st.divider()
 
         # Recurso Mandatório: Upload de Arquivos
-        st.markdown("#### 📂 Ingestão de Dados (Upload)")
+        st.markdown("#### Ingestão de Dados (Upload)")
         uploaded_file = st.file_uploader(
             "Base de dados alternativa (CSV/XLSX):",
             type=["csv", "xlsx", "xls"],
@@ -131,7 +179,7 @@ def main():
         )
 
         st.divider()
-        st.markdown("#### 🎯 Atuação de Consultoria (Personas)")
+        st.markdown("#### Consultoria por Persona")
         
         # Mapeamento dos prefeitos
         opcoes_persona = [
@@ -145,7 +193,7 @@ def main():
         persona_selecionada = st.selectbox("Selecione a Persona demandante:", opcoes_persona)
 
         st.divider()
-        st.markdown("#### 🔍 Filtros Territoriais")
+        st.markdown("#### Filtros Territoriais")
         
         # Carrega dados preliminares para preencher opções dos filtros
         df_base, status_fonte = carregar_dados_capitais(uploaded_file)
@@ -171,10 +219,10 @@ def main():
     # ==========================================
     # CABEÇALHO PRINCIPAL
     # ==========================================
-    st.markdown('<div class="main-title">Indicador 3: População e Crescimento Demográfico</div>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">Indicador 3: População e Crescimento Demográfico</h1>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="subtitle">Análise estatística descritiva, velocidade de crescimento intercensitário (2010–2022) '
-        'e transição demográfica para fundamentação dos Planos Diretores.</div>',
+        '<p class="subtitle">Análise estatística descritiva, velocidade de crescimento intercensitário (2010–2022) '
+        'e transição demográfica para fundamentação dos Planos Diretores.</p>',
         unsafe_allow_html=True
     )
 
@@ -188,7 +236,7 @@ def main():
         
         st.markdown(f"""
         <div class="persona-box">
-            <h4 style="margin: 0 0 6px 0; color: inherit;">📋 Briefing Executivo: {persona_selecionada}</h4>
+            <h4 style="margin: 0 0 6px 0; color: inherit;">Briefing Executivo: {persona_selecionada}</h4>
             <p style="margin: 0; font-size: 0.92rem; color: inherit; opacity: 0.9;">
                 <b>Diagnóstico de {cidade_alvo}:</b> População apurada em 2022 de <b>{pop22_cid:,}</b> habitantes, com 
                 taxa acumulada de crescimento de <b style="color: {'#0D9488' if taxa_cid >= 0 else '#BE123C'}">{taxa_cid:+.2f}%</b> entre 2010 e 2022.<br>
@@ -208,10 +256,10 @@ def main():
     # NAVEGAÇÃO EM 4 ABAS
     # ==========================================
     tab1, tab2, tab3, tab4 = st.tabs([
-        "📊 Rigor Estatístico & Dispersão",
-        "👥 Pirâmide Etária & Envelhecimento",
-        "📈 Crescimento & Outliers (2010–2022)",
-        "📰 Sala de Notícias & Planejamento"
+        "Rigor Estatístico e Dispersão",
+        "Pirâmide Etária e Envelhecimento",
+        "Crescimento e Outliers (2010–2022)",
+        "Sala de Imprensa e Planejamento"
     ])
 
     # ----------------------------------------------------
@@ -242,7 +290,7 @@ def main():
         col_esq, col_dir = st.columns([1, 1])
 
         with col_esq:
-            st.markdown("##### 📐 Separatrizes e Regra de Outliers (Tukey)")
+            st.markdown("##### Separatrizes e Regra de Outliers (Tukey)")
             df_quartis = pd.DataFrame([
                 {"Medida": "Mínimo", "Valor": f"{stats.get('min', 0):.2f}%", "Significado": "Menor crescimento registrado"},
                 {"Medida": "1º Quartil (Q1 - 25%)", "Valor": f"{stats.get('q1', 0):.2f}%", "Significado": "25% das cidades cresceram abaixo deste valor"},
@@ -265,7 +313,7 @@ def main():
             st.plotly_chart(fig_box, use_container_width=True)
 
         # Cidades Outliers Identificadas
-        st.markdown("##### ⚠️ Identificação Formal de Outliers de Crescimento")
+        st.markdown("##### Identificação Formal de Outliers de Crescimento")
         total_outliers = stats.get("qtd_outliers", 0)
         if total_outliers > 0:
             st.warning(f"Foram identificados **{total_outliers} municípios anômalos (outliers)** além dos limites de 1,5 × IQR.")
@@ -321,7 +369,7 @@ def main():
             with k5:
                 st.metric("Razão de Sexo (H/M)", f"{metricas_demo['razao_sexo']:.1f}")
 
-            st.caption("ℹ️ *Índice de Envelhecimento:* Número de idosos (60+) para cada 100 jovens (0 a 14 anos).")
+            st.caption("*Índice de Envelhecimento:* Número de idosos (60+) para cada 100 jovens (0 a 14 anos).")
 
             fig_piramide = plot_piramide_etaria(df_piramide_all, local_escolhido)
             st.plotly_chart(fig_piramide, use_container_width=True)
@@ -347,12 +395,12 @@ def main():
             st.plotly_chart(fig_barras, use_container_width=True)
             
         with col_graf2:
-            st.markdown("##### 📈 Trajetória Intercensitária")
+            st.markdown("##### Trajetória Intercensitária")
             cidades_destaque = ["Curitiba", "Porto Alegre", "Belo Horizonte", "Salvador", "Florianópolis"]
             fig_linhas = plot_evolucao_comparativa(df_base, cidades_destaque)
             st.plotly_chart(fig_linhas, use_container_width=True)
 
-        st.markdown("##### 📋 Tabela Completa de Dados")
+        st.markdown("##### Tabela Completa de Dados")
         st.dataframe(
             df_filtrado[["municipio", "uf", "regiao", "pop_2010", "pop_2022", "variacao_absoluta", "taxa_crescimento_pct", "taxa_anual_pct"]],
             use_container_width=True,
@@ -363,7 +411,7 @@ def main():
     # ABA 4: SALA DE NOTÍCIAS & PLANEJAMENTO URBANO
     # ----------------------------------------------------
     with tab4:
-        st.markdown("#### 📰 Sala de Imprensa & Contexto do Planejamento Urbano")
+        st.markdown("#### Sala de Imprensa e Contexto do Planejamento Urbano")
         st.caption("Reportagens e dados oficiais contextualizados para fundamentação do Plano Diretor.")
 
         noticias = get_noticias_demograficas()
@@ -381,7 +429,7 @@ def main():
             """, unsafe_allow_html=True)
 
         st.divider()
-        st.markdown("##### 🌆 Impacto no Plano Diretor das Cidades-Alvo")
+        st.markdown("##### Impacto no Plano Diretor das Cidades-Alvo")
         st.write("""
         * **Curitiba e Belo Horizonte:** Consolidação urbana com crescimento vegetativo mínimo demandam foco em requalificação de centros urbanos e mobilidade ativa.
         * **Porto Alegre e Salvador:** A retração populacional relativa impõe reavaliação de receitas tributárias (IPTU/FPM) e readequação de serviços públicos subutilizados.

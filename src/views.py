@@ -16,7 +16,7 @@ COLOR_NEGATIVE = "#BE123C"    # Rose 700 (retração populacional)
 COLOR_HIGHLIGHT = "#D97706"   # Amber 600 (destaque persona)
 COLOR_MUTED = "#64748B"       # Slate 500
 BG_PAPER = "rgba(0,0,0,0)"
-FONT_FAMILY = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+FONT_FAMILY = "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
 
 
 def plot_boxplot_dispersao(df: pd.DataFrame, stats: Dict[str, Any], coluna_taxa: str = "taxa_crescimento_pct") -> go.Figure:
